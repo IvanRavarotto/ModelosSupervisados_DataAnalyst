@@ -1,43 +1,40 @@
-# Modelos Supervisados - DataAnalyst
+Análisis y Predicción de Enfermedades Cardiovasculares mediante Clasificación Supervisada (DecisionTreeClassifier, Naive Bayesian, Support Vector Machines, K-Nearest Neighbor y Perceptron)
+Este proyecto de Google Colab explora la aplicación de diversas técnicas de clasificación supervisada para analizar y predecir el riesgo de enfermedades cardiovasculares. El objetivo principal es construir modelos predictivos que puedan clasificar a los pacientes en categorías de 'Sano' o 'Enfermo' basándose en características médicas, utilizando etiquetas predefinidas en el entrenamiento.
 
-## Proyecto Grupal
+📊 Dataset
+El análisis se basa en el dataset de Enfermedades Cardiovasculares (Cardiovascular_Disease_Dataset.csv), cargado directamente desde un repositorio de GitHub. Este dataset contiene diversas métricas de salud de pacientes, incluyendo:
 
-Detección de Enfermedades Cardiovasculares con Modelos de Machine Learning
-Descripción del Proyecto
-Este proyecto se enfoca en el desarrollo y evaluación de diversos modelos de Machine Learning para predecir la presencia de enfermedades cardiovasculares. Utilizando un dataset específico de condiciones cardíacas, se implementan y comparan algoritmos supervisados con el objetivo de identificar el modelo más eficiente en términos de precisión y tiempo de predicción.
+age: Edad
+gender: Género (0: Femenino, 1: Masculino)
+chestpain: Tipo de dolor de pecho
+restingBP: Presión arterial en reposo
+serumcholestrol: Colesterol sérico
+fastingbloodsugar: Azúcar en sangre en ayunas
+restingrelectro: Resultados electrocardiográficos en reposo
+maxheartrate: Frecuencia cardíaca máxima alcanzada
+exerciseangia: Angina inducida por ejercicio
+oldpeak: Depresión del ST inducida por el ejercicio
+slope: La pendiente del segmento ST pico del ejercicio
+noofmajorvessels: Número de vasos principales coloreados por fluoroscopia
+target: Variable objetivo (0: Sano, 1: Enfermo) - Utilizada para el entrenamiento y evaluación de los modelos supervisados.
+🚀 Metodología
+1. Preprocesamiento de Datos
+Antes de aplicar los algoritmos de clasificación, los datos fueron preprocesados y divididos en conjuntos de entrenamiento y prueba (80% y 20% respectivamente).
 
-Objetivo
-El objetivo principal es construir y comparar modelos predictivos que puedan clasificar con alta precisión si un paciente tiene probabilidades de sufrir inconvenientes cardíacos, basándose en un conjunto de características clínicas. Además, se busca analizar el impacto de la selección de características en el rendimiento del modelo, evaluando tanto un conjunto completo de características como un subconjunto reducido.
+2. Modelos de Clasificación Supervisada
+Se implementaron y evaluaron los siguientes algoritmos de clasificación:
 
-Metodología
-El proceso de análisis y modelado se estructura en las siguientes fases:
+Decision Tree Classifier (Árbol de Decisión): Un modelo intuitivo que toma decisiones de manera jerárquica.
+Naive Bayesian (Clasificador Bayesiano Ingenuo): Basado en el teorema de Bayes, asumiendo independencia entre las características.
+Se exploraron MultinomialNB (para el dataset completo) y GaussianNB (con un subconjunto de 5 características clave).
+Support Vector Machines (SVM): Busca el hiperplano óptimo para separar las clases.
+K-Nearest Neighbor (KNN): Clasifica un punto de datos basándose en la mayoría de las clases de sus 'K' vecinos más cercanos.
+Perceptron: Un algoritmo de aprendizaje supervisado para clasificación binaria, que simula el funcionamiento básico de una neurona.
+3. Evaluación de Modelos
+Cada modelo fue evaluado utilizando métricas clave como:
 
-Carga y Exploración de Datos: Se carga el dataset de enfermedades cardiovasculares y se realizan análisis exploratorios básicos para entender la distribución y características de los datos.
-Preprocesamiento de Datos: Se prepara el dataset para el entrenamiento de los modelos, incluyendo la división en conjuntos de entrenamiento y prueba.
-Implementación y Evaluación de Modelos: Se implementan y entrenan los siguientes algoritmos de clasificación:
-Árbol de Decisión (Decision Tree)
-Naive Bayes (MultinomialNB y GaussianNB)
-Máquinas de Soporte Vectorial (SVM)
-K-Nearest Neighbors (KNN)
-Perceptrón (Perceptron)
-Optimización y Comparación: Para cada modelo, se evalúa su rendimiento utilizando métricas como la precisión (accuracy) y el tiempo de predicción. Se exploran diferentes configuraciones (por ejemplo, número de vecinos en KNN, diferentes random_states) y se compara el rendimiento de los modelos con el conjunto completo de características y con un subconjunto de 5 características clave (slope, chestpain, restingBP, restingrelectro, noofmajorvessels).
-Formularios Interactivos: Se desarrollan formularios en el cuaderno para permitir la predicción interactiva de nuevos pacientes utilizando los modelos entrenados.
-Resultados Clave
-La tabla de resumen a continuación muestra una comparación de la precisión y el tiempo de predicción de los modelos evaluados, destacando el impacto de la selección de características:
-
-Modelo	Columnas Usadas	Precisión (%)	Tiempo de Predicción (s)
-Árbol de Decisión	5 columnas	95.0	0.003667
-Árbol de Decisión	Todas	94.5	0.002380
-Naive Bayesian	5 columnas	99.0	0.000933
-Naive Bayesian	Todas	98.5	0.001837
-SVM	5 columnas	92.0	0.003016
-SVM	Todas	96.5	0.017086
-KNN	5 columnas	96.50	0.004219
-KNN	Todas	87.0	0.003346
-Perceptrón	5 columnas	90.50	0.001384
-Perceptrón	Todas	78.5	0.003867
-Observaciones:
-El modelo Naive Bayesian con 5 columnas demostró la mayor precisión (99.0%) y un excelente tiempo de predicción.
-En general, el uso de un subconjunto de 5 columnas (slope, chestpain, restingBP, restingrelectro, noofmajorvessels) resultó en modelos más rápidos y, en muchos casos, con mayor o similar precisión que los modelos entrenados con todas las columnas. Esto sugiere que estas 5 características son altamente predictivas y que un modelo más simple puede ser más eficiente.
-Conclusión
-Este proyecto demuestra la efectividad de los modelos de Machine Learning en la predicción de enfermedades cardiovasculares. El análisis comparativo resalta la importancia de la selección de características, donde un conjunto reducido de atributos clave puede llevar a modelos más eficientes y precisos. El modelo Naive Bayesian, en particular, se destaca como una opción prometedora para esta tarea.
+Precisión (Accuracy Score): El porcentaje de predicciones correctas.
+Matriz de Confusión: Para visualizar el rendimiento del clasificador (verdaderos positivos, verdaderos negativos, falsos positivos y falsos negativos).
+Tiempo de Entrenamiento y Predicción: Para comparar la eficiencia computacional de cada algoritmo.
+4. Predicción de Nuevos Pacientes
+Se incluyó una funcionalidad para ingresar datos de un nuevo paciente y obtener una predicción de riesgo cardiovascular con cada uno de los modelos entrenados.
